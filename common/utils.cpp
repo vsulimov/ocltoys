@@ -25,6 +25,7 @@
 
 #include "opencl.h"
 #include "utils.h"
+#include "version.h"
 
 // Helper function to get error string
 std::string OCLErrorString(cl_int error) {
@@ -179,7 +180,7 @@ void PrintHelpString(const unsigned int x, const unsigned int y,
 
 std::string ReadSources(const std::string &fileName, const std::string &name) {
 	std::string fileFullPath;
-	fileFullPath = std::string("/usr/share/ocltoys/") + \
+	fileFullPath = std::string(OCLTOYS_SHARE_PREFIX) + \
 	               std::string(name) + std::string("/") + \
 	               std::string(fileName);
 	std::ifstream ifs(fileFullPath.c_str());

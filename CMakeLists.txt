@@ -38,6 +38,12 @@ project(OCLToys)
 # Dont overconfigure
 SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "limit configs" FORCE)
 
+if(NOT CMAKE_INSTALL_PREFIX)
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
+endif(NOT CMAKE_INSTALL_PREFIX)
+if(NOT SHARE_INSTALL_DIR)
+  set(SHARE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/share")
+endif(NOT SHARE_INSTALL_DIR)
 
 ###########################################################################
 #
