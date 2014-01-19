@@ -31,3 +31,14 @@ TARGET_LINK_LIBRARIES(mandelgpu ocltoys_common ${GLUT_LIBRARY} ${OPENGL_LIBRARY}
 
 # This instructs FREEGLUT to emit a pragma for the static version
 SET_TARGET_PROPERTIES(mandelgpu PROPERTIES COMPILE_DEFINITIONS FREEGLUT_STATIC)
+
+install(TARGETS mandelgpu
+        RUNTIME DESTINATION bin)
+
+set(CL_SRCS
+  rendering_kernel.cl
+  rendering_kernel_float4.cl
+  )
+
+install(FILES ${CL_SRCS}
+        DESTINATION ${SHARE_INSTALL_DIR}/ocltoys/mandelgpu)

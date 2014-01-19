@@ -33,3 +33,14 @@ TARGET_LINK_LIBRARIES(smallptgpu ocltoys_common ${GLUT_LIBRARY} ${OPENGL_LIBRARY
 
 # This instructs FREEGLUT to emit a pragma for the static version
 SET_TARGET_PROPERTIES(smallptgpu PROPERTIES COMPILE_DEFINITIONS FREEGLUT_STATIC)
+
+install(TARGETS smallptgpu
+        RUNTIME DESTINATION bin)
+
+set(CL_SRCS
+  preprocessed_rendering_kernel.cl
+  rendering_kernel.cl
+  )
+
+install(FILES ${CL_SRCS}
+        DESTINATION ${SHARE_INSTALL_DIR}/ocltoys/smallptgpu)
