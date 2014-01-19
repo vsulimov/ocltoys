@@ -455,7 +455,7 @@ private:
 		OCLTOY_LOG("Compile OpenCL kernel: " << kernelFileName);
 
 		// Read the kernel
-		const std::string kernelSource = ReadSources(kernelFileName);
+		const std::string kernelSource = ReadSources(kernelFileName, "smallptgpu");
 
 		// Kernel options
 		std::stringstream ss;

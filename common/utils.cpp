@@ -177,10 +177,18 @@ void PrintHelpString(const unsigned int x, const unsigned int y,
 	PrintString(GLUT_BITMAP_9_BY_15, msg);
 }
 
-std::string ReadSources(const std::string &fileName) {
-	std::ifstream ifs(fileName.c_str());
-	if (!ifs.good())
-		throw std::runtime_error("Error while opening file: " + fileName);
+std::string ReadSources(const std::string &fileName, const std::string &name) {
+	std::string fileFullPath;
+	fileFullPath = std::string("/usr/share/ocltoys/") + \
+	               std::string(name) + std::string("/") + \
+	               std::string(fileName);
+	std::ifstream ifs(fileFullPath.c_str());
+	if (!ifs.good()) {
+		fileFullPath = std::string(fileName);
+		std::ifstream ifs(fileFullPath.c_str());
+		if (!ifs.good())
+			throw std::runtime_error("Error while opening file: " + fileName);
+	}
 
 	std::string content((std::istreambuf_iterator<char>(ifs)),
 			(std::istreambuf_iterator<char>()));	
